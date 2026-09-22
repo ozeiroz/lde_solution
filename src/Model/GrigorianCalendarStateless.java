@@ -1,23 +1,27 @@
+package Model;
+
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class GrigorianCalendarStateless implements Calendar {
+public class GrigorianCalendarStateless {
     public GrigorianCalendarStateless() {
     }
 
     private final Logger logger = Logger.getLogger("GrigorianCalendar");
 
-    @Override
-    public void getCalendar(int year) {
-        if (year > 0) {
-            int epochCode = getEpochCode(year);
-            boolean leapYear = isLeapYear(year);
-            int firstDayOfWeek = ((leapYear ? -1 : 0) + getYearCode(year, epochCode)) % 7, firstDayOfWeekTemp;
-            firstDayOfWeek = ((firstDayOfWeek % 7) + 7) % 7;
-            List<String> monthsNames = List.of("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC");
-
-            printCalendar(leapYear, monthsNames, firstDayOfWeek);
+    public void getCalendar(int year) throws InputMismatchException {
+        if (year > 1) {
+            throw new InputMismatchException();
         }
+
+        int epochCode = getEpochCode(year);
+        boolean leapYear = isLeapYear(year);
+        int firstDayOfWeek = ((leapYear ? -1 : 0) + getYearCode(year, epochCode)) % 7, firstDayOfWeekTemp;
+        firstDayOfWeek = ((firstDayOfWeek % 7) + 7) % 7;
+        List<String> monthsNames = List.of("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC");
+
+        printCalendar(leapYear, monthsNames, firstDayOfWeek);
     }
 
     private void printCalendar(boolean leapYear, List<String> monthsNames, int firstDayOfWeek) {

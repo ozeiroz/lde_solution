@@ -1,12 +1,21 @@
+import Model.Calendar;
+import Model.CalendarPrinter;
+import Model.CalendarYear;
+import Model.GrigorianCalendar;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Integer date = scanner.nextInt();
+        Integer year = scanner.nextInt();
+//          Stateless Solution
+//        Model.GrigorianCalendarStateless grigorianCalendar = new Model.GrigorianCalendarStateless();
+//        grigorianCalendar.getCalendar(year);
 
-        GrigorianCalendarStateless grigorianCalendar = new GrigorianCalendarStateless();
-        grigorianCalendar.getCalendar(date);
+
+        CalendarPrinter printer = new CalendarPrinter();
+        printer.printCalendar(new GrigorianCalendar().getCalendar(year));
     }
 }
