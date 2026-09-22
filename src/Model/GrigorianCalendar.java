@@ -20,7 +20,7 @@ public class GrigorianCalendar implements Calendar {
 
         int epochCode = getEpochCode(year);
         boolean leapYear = isLeapYear(year);
-        int firstDayOfWeek = ((leapYear ? -1 : 0) + getYearCode(year, epochCode)) % 7, firstDayOfWeekTemp;
+        int firstDayOfWeek = (((leapYear ? -1 : 0) + getYearCode(year, epochCode)) % 7 + 7) % 7;
 
         List<Months> monthsList = new ArrayList<>();
 
